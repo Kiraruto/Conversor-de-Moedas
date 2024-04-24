@@ -8,20 +8,21 @@ public class InterfacePrincipal extends ApiKey {
 
     public static void main(String[] args) throws IOException, InterruptedException {
 
-        ApiKey apikey = new ApiKey();
+        ApiKey apikey = new ApiKey(); //    Nova Instância da classe ApiKey
 
-        Double add;
+        Double add; //  Salvando fora do Do
 
-        Scanner scanner = new Scanner(System.in);
-        String moneyName;
+        Scanner scanner = new Scanner(System.in); // Nova Instância da classe Scanner
+
+        String moneyName; //    Salvando fora do Do o número que eu escolho da minha tábela
 
         do {
 
             System.out.println("""
                     *******************************************************
-                                        
+                    
                     Seja Bem-Vindo/a ao Conversor de Moedas =]
-                                        
+                    
                     1) Dólar =>> Peso Argentino
                     2) Peso Argentino =>> Dólar
                     3) Dólar =>> Real Brasileiro
@@ -29,9 +30,9 @@ public class InterfacePrincipal extends ApiKey {
                     5) Dólar =>> Peso Colombiano
                     6) Peso Colombiano =>> Dólar
                     7) Dólar =>> dirham
-                    8) dirham =>> Dólar                    
+                    8) dirham =>> Dólar
                     9) Sair
-                                        
+                    
                     Escolha uma opção válida:
                     *******************************************************
                     """);
@@ -41,17 +42,17 @@ public class InterfacePrincipal extends ApiKey {
             if (moneyName.equals("9")) {
                 System.out.println("Obrigado por usar nosso sistema Saindo.... ");
                 break;
-            }
+            } //    Dizendo que se sair 9 é para finalizar aqui mesmo
 
             System.out.println("Qual o valaor que você quer converter");
 
-            long moneyValue = scanner.nextLong();
+            long moneyValue = scanner.nextLong(); //    Salvando a quantidade que eu quero converter
 
             switch (moneyName) {
                 case "1":
-                    apikey.httpRequest("USD", "ARS");
-                    add = apikey.getJsonCoin().conversion_rate() * moneyValue;
-                    System.out.println("Valor " + moneyValue + "[USD] corresponde ao valor final de =>>> " + add + "[ARS]");
+                    apikey.httpRequest("USD", "ARS"); //    Utilizando o Método httpRequest
+                    add = apikey.getJsonCoin().conversion_rate() * moneyValue; //   Fazendo a conta que eu preciso para fazer o câmbio
+                    System.out.println("Valor " + moneyValue + "[USD] corresponde ao valor final de =>>> " + add + "[ARS]"); // Mostrando o Resultado
                     break;
                 case "2":
                     apikey.httpRequest("ARS", "USD");
@@ -89,7 +90,7 @@ public class InterfacePrincipal extends ApiKey {
                     System.out.println("Valor " + moneyValue + "[AED] corresponde ao valor final de =>>> " + add + "[USD]");
                     break;
                 default:
-                    System.out.println("Digite uma opção valida: 1 ao 7");
+                    System.out.println("Digite uma opção valida: 1 ao 9"); //   Default case
                     break;
             }
         } while (true);
